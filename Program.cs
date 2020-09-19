@@ -19,6 +19,9 @@ namespace GoToHV
             user.UserName = username;
             user.Password = password;
 
+
+            //Todo den här ska vara en annan metod. Gör den mer lättläslig. exempelvis kan den heta LoginToHv(). Vi vill gärna få med vår instans från user så vi kan använda de uppgifterna för att logga in.
+            //Tanken är att vi ska göra det möjligt för användaren att välja vilken sida de vill logga in på. Beroende på vilken sida har vi olika metoder som loggar in på var sin sida. Eftersom det är olika väg till att logga in (olika element etc som ska tryckas på) behöver vi olika metoder för att loga in på respektive sida. 
             var driver = new ChromeDriver();
 
             driver.Url = "https://www.hv.se";
@@ -37,7 +40,6 @@ namespace GoToHV
 
             element.Click();
 
-           
             Thread.Sleep(1000);
             element = driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/main/div/div/div/form/div[2]/div[1]/input"));
             element.SendKeys(username);
