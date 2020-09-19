@@ -13,7 +13,9 @@ namespace GoToHV
 
             while (!quitProgram)
             {
-                UserInput();
+              
+               quitProgram = UserInput();
+               
             }
         }
 
@@ -44,11 +46,12 @@ namespace GoToHV
                 case 2:
                     LoginToHv(user);
                     break;
+                default:
+                    return true;
+                    break;
             }
 
-            //LoginToHv(user);
-            LoginToLadok(user);
-
+            return false;
         }
 
         public static void LoginToLadok(Users user)
@@ -57,12 +60,15 @@ namespace GoToHV
 
             driver.Url = "https://idp.hv.se/idp/profile/SAML2/Redirect/SSO;jsessionid=4oiqdac9opn6bcgu0xjcr9p1?execution=e1s1";
 
+            Thread.Sleep(1000);
             IWebElement element = driver.FindElement(By.XPath("/html/body/div/div/div/div[1]/form/div[1]/input"));
             element.SendKeys(user.UserName);
 
+            Thread.Sleep(1000);
             element = driver.FindElement(By.XPath("/html/body/div/div/div/div[1]/form/div[2]/input"));
             element.SendKeys(user.Password);
 
+            Thread.Sleep(1000);
             element = driver.FindElement(By.XPath("/ html / body / div / div / div / div[1] / form / div[4] / button"));
             element.Click(); 
 
