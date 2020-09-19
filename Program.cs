@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
+using OpenQA.Selenium.Chrome;
+
 
 namespace GoToHV
 {
@@ -7,6 +10,9 @@ namespace GoToHV
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            IWebDriver driver = new ChromeDriver();
+            driver.Navigate().GoToUrl("https://www.hv.se/");
+            
         }
     }
 }
