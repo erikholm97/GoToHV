@@ -10,8 +10,10 @@ namespace GoToHV
         static void Main(string[] args)
         {
             Console.WriteLine("Hello!");
-            Console.WriteLine("Enter your credentials: Username and password");
+            Console.WriteLine("Enter your credentials: ");
+            Console.Write("Enter Username: ");
             string username = Console.ReadLine();
+            Console.Write("Enter Password: ");
             string password = Console.ReadLine();
 
             Users user = new Users();
@@ -27,6 +29,9 @@ namespace GoToHV
             {
                 case 1:
                     LoginToLadok(user);
+                    break;
+                case 2:
+                    LoginToHv(user);
                     break;
             }
 
