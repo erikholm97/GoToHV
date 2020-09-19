@@ -2,6 +2,7 @@
 using System;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace GoToHV
 {
@@ -9,6 +10,13 @@ namespace GoToHV
     {
         static void Main(string[] args)
         {
+            bool quitProgram = false;
+
+            while (!quitProgram)
+            {
+
+            }
+
             Console.WriteLine("Hello!");
             Console.WriteLine("Enter your credentials: ");
             Console.Write("Enter Username: ");
