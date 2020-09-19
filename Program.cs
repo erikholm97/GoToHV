@@ -22,8 +22,8 @@ namespace GoToHV
             IWebDriver driver = new ChromeDriver();
             
             driver.Navigate().GoToUrl("https://www.hv.se/");
-            
 
+            driver.FindElement(By.XPath("//button[contains(text(), 'Upload this file')]")).Click();
 
         }
     }
