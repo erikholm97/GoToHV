@@ -19,11 +19,25 @@ namespace GoToHV
             user.UserName = username;
             user.Password = password;
 
+            //LoginToHv(user);
+            LoginToLadok(user);
+        }
 
-            //Todo den här ska vara en annan metod. Gör den mer lättläslig. exempelvis kan den heta LoginToHv(). Vi vill gärna få med vår instans från user så vi kan använda de uppgifterna för att logga in.
-            //Tanken är att vi ska göra det möjligt för användaren att välja vilken sida de vill logga in på. Beroende på vilken sida har vi olika metoder som loggar in på var sin sida. Eftersom det är olika väg till att logga in (olika element etc som ska tryckas på) behöver vi olika metoder för att loga in på respektive sida. 
+        public static void LoginToLadok(Users user)
+        {
             var driver = new ChromeDriver();
 
+            driver.Url = "https://idp.hv.se/idp/profile/SAML2/Redirect/SSO;jsessionid=4oiqdac9opn6bcgu0xjcr9p1?execution=e1s1";
+
+            IWebElement element = driver.FindElement(By.XPath("/html/body/div/div/div/div[1]/form/div[1]/input"));
+            element.SendKeys(user.UserName);
+
+        }
+
+        public static void LoginToHv(Users user)
+        {
+            var driver = new ChromeDriver();
+            
             driver.Url = "https://www.hv.se";
 
             IWebElement element = driver.FindElement(By.XPath("/ html / body / div[1] / header / div[1] / div / div / nav / ul / li[1] / a")); // locate the button, can be done with any other selector
@@ -42,13 +56,13 @@ namespace GoToHV
 
             Thread.Sleep(1000);
             element = driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/main/div/div/div/form/div[2]/div[1]/input"));
-            element.SendKeys(username);
+            element.SendKeys(user.UserName);
 
             Thread.Sleep(1000);
             element = driver.FindElement(By.XPath("/ html / body / div[2] / div[2] / div / main / div / div / div / form / div[2] / div[2] / input"));
 
             element.Click();
-            element.SendKeys(password);
+            element.SendKeys(user.Password);
 
             element = driver.FindElement(By.XPath("/html/body/div[2]/div[2]/div/main/div/div/div/form/div[2]/div[4]/span"));
 
