@@ -38,6 +38,10 @@ namespace GoToHV
             Console.WriteLine("Select what you want to do?");
             int userInputSelection = int.Parse(Console.ReadLine());
 
+            Console.WriteLine($"{1}. Login to Ladok");
+            Console.WriteLine($"{2}. Login to HV");
+            Console.WriteLine($"{3}. Login to QUIT");
+            
             switch (userInputSelection)
             {
                 case 1:
@@ -45,6 +49,9 @@ namespace GoToHV
                     break;
                 case 2:
                     LoginToHv(user);
+                    break;
+                case 3:
+                    return true;
                     break;
                 default:
                     return true;
