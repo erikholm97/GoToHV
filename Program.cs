@@ -19,6 +19,17 @@ namespace GoToHV
             user.UserName = username;
             user.Password = password;
 
+
+            Console.WriteLine("Select what you want to do?");
+            int userInputSelection = int.Parse(Console.ReadLine());
+
+            switch (userInputSelection)
+            {
+                case 1:
+                    LoginToLadok(user);
+                    break;
+            }
+
             //LoginToHv(user);
             LoginToLadok(user);
         }
@@ -31,6 +42,12 @@ namespace GoToHV
 
             IWebElement element = driver.FindElement(By.XPath("/html/body/div/div/div/div[1]/form/div[1]/input"));
             element.SendKeys(user.UserName);
+
+            element = driver.FindElement(By.XPath("/html/body/div/div/div/div[1]/form/div[2]/input"));
+            element.SendKeys(user.Password);
+
+            element = driver.FindElement(By.XPath("/ html / body / div / div / div / div[1] / form / div[4] / button"));
+            element.Click(); 
 
         }
 
