@@ -2,7 +2,6 @@
 using System;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
-using System.Collections.Generic;
 
 namespace GoToHV
 {
@@ -14,9 +13,13 @@ namespace GoToHV
 
             while (!quitProgram)
             {
-
+                UserInput();
             }
+        }
 
+        public static bool UserInput()
+        {
+           // Console.ReadKey().Key != ConsoleKey.Escape
             Console.WriteLine("Hello!");
             Console.WriteLine("Enter your credentials: ");
             Console.Write("Enter Username: ");
@@ -45,6 +48,7 @@ namespace GoToHV
 
             //LoginToHv(user);
             LoginToLadok(user);
+
         }
 
         public static void LoginToLadok(Users user)
