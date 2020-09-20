@@ -26,7 +26,7 @@ namespace GoToHV
 
             Console.WriteLine("Hello! We will soon let you knew if you are qualified to study at Universty West.");
 
-            Console.WriteLine("Enter your age: ");
+            Console.Write("Enter your age: ");
             int age = int.Parse(Console.ReadLine());
 
             Console.Write("Enter your current total credits: ");
@@ -55,20 +55,27 @@ namespace GoToHV
                 Console.WriteLine("Press [Enter] to quit the program!");
                 Console.ReadLine();
                 Environment.Exit(-1); // quite
-
             }
 
             else if (newStudent.Age > 18 && totalCredits > 100 && currentAdress < 30)
             {
-
                 Console.WriteLine("Result coming up, please wait...");
                 Thread.Sleep(3000);
                 Console.WriteLine("_____________________________________________________________________");
-
-                Console.WriteLine("You are  qualified to study in our universty, we are happy to have you!");
-
+                Console.WriteLine("You are qualified to study in our universty, we are happy to have you!");
                 Console.WriteLine("Press [Enter] to continue.");
                 Console.ReadLine();
+            }
+
+            else
+            {
+                Console.WriteLine("Result coming up, please wait...");
+                Thread.Sleep(3000);
+                Console.WriteLine("_____________________________________________________________________");
+                Console.WriteLine("You are not qualified to study in our universty, we are very sorry.");
+                Console.WriteLine("Press [Enter] to quit the program!");
+                Console.ReadLine();
+                Environment.Exit(-1); // quite
             }
 
         }
@@ -94,8 +101,7 @@ namespace GoToHV
 
             Console.WriteLine($"{1}. Login to Ladok");
             Console.WriteLine($"{2}. Login to HV");
-            Console.WriteLine($"{3}. Check if I am qualified to study at University West");
-            Console.WriteLine($"{4}. Login to QUIT");
+            Console.WriteLine($"{3}. Login to QUIT");
             
             switch (userInputSelection)
             {
@@ -106,9 +112,6 @@ namespace GoToHV
                     LoginToHv(user);
                     break;
                 case 3:
-                    CheckStudentCredentials();
-                    break;
-                case 4:
                     return true;
                     break;
 
