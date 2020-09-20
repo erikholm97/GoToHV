@@ -49,10 +49,12 @@ namespace GoToHV
             {
                 Console.WriteLine("Result coming up, please wait...");
                 Thread.Sleep(3000);
+                Console.WriteLine("");
+                Console.WriteLine("_____________________________________________________________________");
                 Console.WriteLine("You are not qualified to study in our universty, we are very sorry.");
-                Console.WriteLine("Press any key to quit the program!");
+                Console.WriteLine("Press [Enter] to quit the program!");
                 Console.ReadLine();
-                // Todo quit the program here
+                Environment.Exit(-1); // quite
 
             }
 
@@ -61,7 +63,12 @@ namespace GoToHV
 
                 Console.WriteLine("Result coming up, please wait...");
                 Thread.Sleep(3000);
+                Console.WriteLine("_____________________________________________________________________");
+
                 Console.WriteLine("You are  qualified to study in our universty, we are happy to have you!");
+
+                Console.WriteLine("Press [Enter] to continue.");
+                Console.ReadLine();
             }
 
         }
