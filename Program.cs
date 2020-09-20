@@ -2,6 +2,7 @@
 using System;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
+using GoToHV.Class;
 
 namespace GoToHV
 {
@@ -13,17 +14,63 @@ namespace GoToHV
 
             while (!quitProgram)
             {
-              
-               quitProgram = UserInput();
+                CheckStudentCredentials();
+                 quitProgram = UserInput();
                
             }
+
+        }
+
+        private static void CheckStudentCredentials()
+        {
+
+            Console.WriteLine("Hello! We will soon let you knew if you are qualified to study at Universty West.");
+
+            Console.WriteLine("Enter your age: ");
+            int age = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter your current total credits: ");
+            int totalCredits = int.Parse(Console.ReadLine());
+
+            Console.Write("How many kilometers away do you live from universty? ");
+            int currentAdress = int.Parse(Console.ReadLine());
+
+            QualifiedCheck newStudent = new QualifiedCheck();
+            newStudent.Age = age;
+            newStudent.TotalCredits = totalCredits;
+            newStudent.Adress = currentAdress;
+
+            Console.WriteLine("Age: " + age);
+            Console.WriteLine("Total Credits: " + totalCredits + "hp");
+            Console.WriteLine("Kilometers away: " + currentAdress + "km");
+
+
+            if (newStudent.Age < 18 && totalCredits < 100 && currentAdress > 30 )
+            {
+                Console.WriteLine("Result coming up, please wait...");
+                Thread.Sleep(3000);
+                Console.WriteLine("You are not qualified to study in our universty, we are very sorry.");
+                Console.WriteLine("Press any key to quit the program!");
+                Console.ReadLine();
+                // Todo quit the program here
+
+            }
+
+            else if (newStudent.Age > 18 && totalCredits > 100 && currentAdress < 30)
+            {
+
+                Console.WriteLine("Result coming up, please wait...");
+                Thread.Sleep(3000);
+                Console.WriteLine("You are  qualified to study in our universty, we are happy to have you!");
+            }
+
         }
 
         public static bool UserInput()
         {
            // Console.ReadKey().Key != ConsoleKey.Escape
             Console.WriteLine("Hello!");
-            Console.WriteLine("Enter your credentials: ");
+            Console.WriteLine("Enter your credentials down below! ");
             Console.Write("Enter Username: ");
             string username = Console.ReadLine();
             Console.Write("Enter Password: ");
@@ -40,7 +87,8 @@ namespace GoToHV
 
             Console.WriteLine($"{1}. Login to Ladok");
             Console.WriteLine($"{2}. Login to HV");
-            Console.WriteLine($"{3}. Login to QUIT");
+            Console.WriteLine($"{3}. Check if I am qualified to study at University West");
+            Console.WriteLine($"{4}. Login to QUIT");
             
             switch (userInputSelection)
             {
@@ -51,15 +99,18 @@ namespace GoToHV
                     LoginToHv(user);
                     break;
                 case 3:
+                    CheckStudentCredentials();
+                    break;
+                case 4:
                     return true;
                     break;
-                default:
-                    return true;
-                    break;
+
             }
 
             return false;
         }
+
+        
 
         public static void LoginToLadok(Users user)
         {
