@@ -44,7 +44,7 @@ namespace GoToHV
             Console.WriteLine("Total Credits: " + totalCredits + "hp");
             Console.WriteLine("Kilometers away: " + currentAdress + "km");
 
-
+            // if functions to see if user is qualified 
             if (newStudent.Age < 18 && totalCredits < 100 && currentAdress > 30 )
             {
                 Console.WriteLine("Result coming up, please wait...");
@@ -77,7 +77,6 @@ namespace GoToHV
                 Console.ReadLine();
                 Environment.Exit(-1); // quite
             }
-
         }
 
         public static bool UserInput()
