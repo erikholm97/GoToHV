@@ -23,9 +23,12 @@ namespace GoToHV
 
         private static void CheckStudentCredentials()
         {
-
+            Console.BackgroundColor = ConsoleColor.Black; // change color of console background
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Hello! We will soon let you knew if you are qualified to study at Universty West.");
-
+            Console.ResetColor();
+         
             Console.Write("Enter your age: ");
             int age = int.Parse(Console.ReadLine());
 
