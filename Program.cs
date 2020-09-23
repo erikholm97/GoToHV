@@ -16,7 +16,7 @@ namespace GoToHV
 
             while (!quitProgram)
             {
-               CheckStudentCredentials();
+              // CheckStudentCredentials();
                quitProgram = UserInput();
                
             }
@@ -132,16 +132,11 @@ namespace GoToHV
         private static void TestApi(Users user)
         {
             WebClient client = new WebClient();
-            var strPageCode = client.DownloadString("https://www.hv.se");
+            var strPageCode = client.DownloadString(""); // CREATING AN API ON PROGRESS
 
             Console.WriteLine(strPageCode);
 
-            //WebRequest request = WebRequest.Create("https://www.hv.se");  //Add a new event to process document when download is completed   
-            //WebResponse response = request.GetResponse();
-            //System.IO.StreamReader reader = new System.IO.StreamReader(response.GetResponseStream());
-            //string Text = reader.ReadToEnd();
-
-            //Console.WriteLine(Text);
+  
 
 
 
