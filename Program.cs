@@ -3,6 +3,8 @@ using System;
 using OpenQA.Selenium.Chrome;
 using System.Threading;
 using GoToHV.Class;
+using System.Xml;
+using System.Net;
 
 namespace GoToHV
 {
@@ -14,8 +16,8 @@ namespace GoToHV
 
             while (!quitProgram)
             {
-                CheckStudentCredentials();
-                 quitProgram = UserInput();
+               CheckStudentCredentials();
+               quitProgram = UserInput();
                
             }
 
@@ -97,23 +99,28 @@ namespace GoToHV
             user.UserName = username;
             user.Password = password;
 
+            Console.WriteLine($"{1}. Login to Ladok");
+            Console.WriteLine($"{2}. Login to HV");
+            Console.WriteLine($"{3}. Show page content (in code)");
+            Console.WriteLine($"{4}. Login to QUIT");
 
             Console.WriteLine("Select what you want to do?");
             int userInputSelection = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"{1}. Login to Ladok");
-            Console.WriteLine($"{2}. Login to HV");
-            Console.WriteLine($"{3}. Login to QUIT");
-            
+         
+        
             switch (userInputSelection)
             {
                 case 1:
-                    LoginToLadok(user);
+                   LoginToLadok(user);
                     break;
                 case 2:
                     LoginToHv(user);
                     break;
                 case 3:
+                    TestApi(user);
+                    break;
+                case 4:
                     return true;
                     break;
 
@@ -122,7 +129,23 @@ namespace GoToHV
             return false;
         }
 
-        
+        private static void TestApi(Users user)
+        {
+            WebClient client = new WebClient();
+            var strPageCode = client.DownloadString("https://www.hv.se");
+
+            Console.WriteLine(strPageCode);
+
+            //WebRequest request = WebRequest.Create("https://www.hv.se");  //Add a new event to process document when download is completed   
+            //WebResponse response = request.GetResponse();
+            //System.IO.StreamReader reader = new System.IO.StreamReader(response.GetResponseStream());
+            //string Text = reader.ReadToEnd();
+
+            //Console.WriteLine(Text);
+
+
+
+        }
 
         public static void LoginToLadok(Users user)
         {
