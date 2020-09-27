@@ -16,7 +16,7 @@ namespace GoToHV
 
             while (!quitProgram)
             {
-              CheckStudentCredentials();
+             // CheckStudentCredentials();
                quitProgram = UserInput();
                
             }
@@ -101,7 +101,7 @@ namespace GoToHV
 
             Console.WriteLine($"{1}. Login to Ladok");
             Console.WriteLine($"{2}. Login to HV");
-            Console.WriteLine($"{3}. Show page content (in code)");
+            Console.WriteLine($"{3}. Show info from API");
             Console.WriteLine($"{4}. Login to QUIT");
 
             Console.WriteLine("Select what you want to do?");
@@ -132,13 +132,11 @@ namespace GoToHV
         private static void TestApi(Users user)
         {
             WebClient client = new WebClient();
-            var strPageCode = client.DownloadString("https://www.hv.se/"); // CREATING AN API ON PROGRESS
+            var strPageCode = client.DownloadString("https://localhost:44362/api/TodoItems"); // CREATING AN API ON PROGRESS
 
             Console.WriteLine(strPageCode);
 
-  
-
-
+ 
 
         }
 
