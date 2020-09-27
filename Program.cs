@@ -16,7 +16,7 @@ namespace GoToHV
 
             while (!quitProgram)
             {
-              // CheckStudentCredentials();
+              CheckStudentCredentials();
                quitProgram = UserInput();
                
             }
@@ -132,7 +132,7 @@ namespace GoToHV
         private static void TestApi(Users user)
         {
             WebClient client = new WebClient();
-            var strPageCode = client.DownloadString(""); // CREATING AN API ON PROGRESS
+            var strPageCode = client.DownloadString("https://www.hv.se/"); // CREATING AN API ON PROGRESS
 
             Console.WriteLine(strPageCode);
 
